@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { AuthContainer } from './ViewStyles/AuthStyles';
+import React, { useState } from "react";
+import axios from "axios";
+import { AuthContainer } from "./ViewStyles/AuthStyles";
+import { Link } from "react-router-dom";
 
-export const Register = props => {
+const Register = props => {
   const [userData, setUser] = useState({
-    username: '',
-    password1: '',
-    password2: ''
+    username: "",
+    password1: "",
+    password2: ""
   });
 
   const validateForm = () => {
@@ -20,17 +21,17 @@ export const Register = props => {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .post('https://lambda-mud-test.herokuapp.com/api/registration/', userData)
+      .post("https://lambda-mud-test.herokuapp.com/api/registration/", userData)
       .then(res => {
         console.log(res);
-        localStorage.setItem('key', res.data.key);
+        localStorage.setItem("key", res.data.key);
       })
       .catch(err => console.log(err));
 
     setUser({
-      username: '',
-      password1: '',
-      password2: ''
+      username: "",
+      password1: "",
+      password2: ""
     });
   };
 
@@ -39,35 +40,37 @@ export const Register = props => {
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <input
-          type='text'
-          placeholder='Username'
+          type="text"
+          placeholder="Username"
           value={userData.username}
           onChange={e => setUser({ ...userData, username: e.target.value })}
         />
 
         <input
-          type='password'
-          placeholder='Password'
+          type="password"
+          placeholder="Password"
           value={userData.password1}
           onChange={e => setUser({ ...userData, password1: e.target.value })}
         />
 
         <input
-          type='password'
-          placeholder='Password'
+          type="password"
+          placeholder="Password"
           value={userData.password2}
           onChange={e => setUser({ ...userData, password2: e.target.value })}
         />
 
         <input
-          type='submit'
+          type="submit"
           disabled={!validateForm()}
-          value={props.loading ? 'Loading...' : 'Register'}
+          value={props.loading ? "Loading..." : "Register"}
         />
       </form>
       <span>
-        Already have an account? <a href='/login'>Login</a>
+        Already have an account? <Link to="/login">Login</Link>
       </span>
     </AuthContainer>
   );
 };
+
+export default Register;

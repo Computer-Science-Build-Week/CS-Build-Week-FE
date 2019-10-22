@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { AuthContainer } from './ViewStyles/AuthStyles';
+import React, { useState } from "react";
+import axios from "axios";
+import { AuthContainer } from "./ViewStyles/AuthStyles";
+import { Link } from "react-router-dom";
 
 const Login = props => {
   const [userData, setUser] = useState({
@@ -49,7 +50,7 @@ const Login = props => {
         />
       </form>
       <span>
-        Don't have an account? <a href="/signup">Sign Up</a>
+        Don't have an account? <Link to="/signup">Sign Up</Link>
       </span>
     </AuthContainer>
   );
