@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import Login from "../view/Login";
+import PrivateRoute from "./PrivateRoute"; // for wrapping the Dashboard once its ready
 
 const appRoutes = () => (
   <Switch>
