@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { AuthContainer } from "./ViewStyles/AuthStyles";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const Login = props => {
   const [userData, setUser] = useState({
@@ -17,7 +17,10 @@ const Login = props => {
     e.preventDefault();
     axios
       .post("https://lambda-mud-test.herokuapp.com/api/login/", userData)
-      .then(res => localStorage.setItem("key", res.data.key))
+      .then(res => {
+        localStorage.setItem("key", res.data.key);
+        props.history.push("/dashboard");
+      })
       .catch(err => console.log(err));
 
     setUser({
@@ -56,4 +59,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

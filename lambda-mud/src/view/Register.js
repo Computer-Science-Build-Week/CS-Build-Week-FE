@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { AuthContainer } from "./ViewStyles/AuthStyles";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const Register = props => {
   const [userData, setUser] = useState({
@@ -25,6 +25,7 @@ const Register = props => {
       .then(res => {
         console.log(res);
         localStorage.setItem("key", res.data.key);
+        props.history.push("/login");
       })
       .catch(err => console.log(err));
 
@@ -73,4 +74,4 @@ const Register = props => {
   );
 };
 
-export default Register;
+export default withRouter(Register);
