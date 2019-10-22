@@ -9,6 +9,7 @@ const appRoutes = () => (
 
     {/* <Route path="/register" component={Register} />    ====Not implemented Yet
     <Route path="/" component={Dashboard} /> */}
+    <Route render={() => <Redirect to="/" />} />
   </Switch>
 );
 
