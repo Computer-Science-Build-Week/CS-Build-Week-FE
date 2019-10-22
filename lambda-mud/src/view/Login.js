@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { LoginContainer } from "./ViewStyles/LoginStyles";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { AuthContainer } from './ViewStyles/AuthStyles';
 
 const Login = props => {
   const [userData, setUser] = useState({
@@ -9,7 +9,7 @@ const Login = props => {
   });
 
   const validateForm = () => {
-    return userData.username.length > 0 && userData.password.length > 0;
+    return userData.username.length > 1 && userData.password.length > 7;
   };
 
   const handleSubmit = e => {
@@ -26,7 +26,7 @@ const Login = props => {
   };
 
   return (
-    <LoginContainer>
+    <AuthContainer>
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -51,7 +51,7 @@ const Login = props => {
       <span>
         Don't have an account? <a href="/signup">Sign Up</a>
       </span>
-    </LoginContainer>
+    </AuthContainer>
   );
 };
 
