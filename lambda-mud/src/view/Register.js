@@ -9,6 +9,7 @@ const Register = props => {
     password1: "",
     password2: ""
   });
+  const [error, setError] = useState("");
 
   const validateForm = () => {
     return (
@@ -20,6 +21,7 @@ const Register = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setError("");
     axios
       .post("https://lambda-mud-test.herokuapp.com/api/registration/", userData)
       .then(res => {
@@ -27,7 +29,13 @@ const Register = props => {
         localStorage.setItem("key", res.data.key);
         props.history.push("/login");
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        //debugger;
+        setError(err.response.data.password1);
+        setTimeout(() => {
+          setError("");
+        }, 2500);
+      });
 
     setUser({
       username: "",
@@ -66,6 +74,7 @@ const Register = props => {
           disabled={!validateForm()}
           value={props.loading ? "Loading..." : "Register"}
         />
+        {error && <p style={{ color: "darkred" }}>{error}</p>}
       </form>
       <span>
         Already have an account? <Link to="/login">Login</Link>
