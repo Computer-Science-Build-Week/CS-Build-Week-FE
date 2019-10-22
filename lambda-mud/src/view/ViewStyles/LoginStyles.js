@@ -20,7 +20,7 @@ export const LoginContainer = styled.div`
     margin: 10px 0;
     text-align: center;
     a {
-        color: #999;
+      color: #999;
     }
   }
   form {
@@ -44,12 +44,17 @@ export const LoginContainer = styled.div`
     }
 
     input[type='submit'] {
-        background-color: #999;
-        color: #fff;
-        border-radius: 3px;
-        padding: 0 10px;
-        text-transform: uppercase;
-        font-weight: bold;
+      background: #999;
+      color: #fff;
+      border-radius: 3px;
+      padding: 0 10px;
+      text-transform: uppercase;
+      font-weight: bold;
+      border: none;
+
+      &:disabled {
+        background: #ccc;
       }
+    }
   }
 `;
