@@ -7,8 +7,8 @@ const axiosWithAuth = () => {
     headers: {
       "Content-Type": "application/json",
       Authorization: `${token}`
-    },
-    baseURL: "https://unsilenced.herokuapp.com"
+    }
+    // baseURL: "https://unsilenced.herokuapp.com"
   });
 };
 
