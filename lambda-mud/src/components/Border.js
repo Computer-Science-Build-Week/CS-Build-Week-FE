@@ -1,9 +1,9 @@
 import React from "react"
-import { StyledBorder } from "./ViewStyles/GameStyles"
+import { StyledBorder } from "../components/styles/ComponentStyles"
 
 const { min } = Math
 
-const showBorder = dir => (dir ? "2px solid #0d5243" : "2px solid #fff")
+const showBorder = dir => (dir ? "1px solid #f8f8ff" : "1px solid #1b1e23")
 
 export const Border = ({ maze }) => (
   <StyledBorder>

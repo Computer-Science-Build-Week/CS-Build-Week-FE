@@ -1,5 +1,5 @@
 import React from "react"
-import { StyledCharacter } from "./ViewStyles/GameStyles"
+import { StyledCharacter } from "../components/styles/ComponentStyles"
 
 
 const { min } = Math
