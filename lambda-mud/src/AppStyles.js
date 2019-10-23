@@ -33,9 +33,9 @@ export const GlobalStyle = createGlobalStyle`
     }
     body, a {
     line-height: 1;
-    text-decoration:none;
+    text-decoration: none;
     }
-    a, input {
+    a, input, button {
         outline: none;
     }
     ol, ul {
