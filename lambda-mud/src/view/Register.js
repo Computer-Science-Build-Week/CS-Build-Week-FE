@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { AuthContainer } from "./ViewStyles/AuthStyles";
 import { Link, withRouter } from "react-router-dom";
+import { PropagateLoader } from "react-spinners";
 
 const Register = props => {
   const [userData, setUser] = useState({
@@ -9,7 +10,8 @@ const Register = props => {
     password1: "",
     password2: ""
   });
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const validateForm = () => {
     return (
@@ -21,7 +23,8 @@ const Register = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setError("");
+    setLoading(true);
+
     axios
       .post(
         "https://lambda-mud-game-sny.herokuapp.com/api/registration/",
@@ -33,18 +36,22 @@ const Register = props => {
         props.history.push("/login");
       })
       .catch(err => {
-        //debugger;
-        setError(err.response.data.password1);
+        userData.password1 !== userData.password2
+          ? setError("Password confirmation doesn't match")
+          : setError(err.response.data.password1);
+
         setTimeout(() => {
           setError("");
         }, 2500);
+      })
+      .finally(err => {
+        setLoading(false);
+        // setUser({
+        //   username: "",
+        //   password1: "",
+        //   password2: ""
+        // });
       });
-
-    setUser({
-      username: "",
-      password1: "",
-      password2: ""
-    });
   };
 
   return (
@@ -67,7 +74,7 @@ const Register = props => {
 
         <input
           type="password"
-          placeholder="Password"
+          placeholder="Confirm password"
           value={userData.password2}
           onChange={e => setUser({ ...userData, password2: e.target.value })}
         />
@@ -77,7 +84,16 @@ const Register = props => {
           disabled={!validateForm()}
           value={props.loading ? "Loading..." : "Register"}
         />
-        {error && <p style={{ color: "darkred" }}>{error}</p>}
+        <PropagateLoader
+          // css={override}
+          sizeUnit={"px"}
+          size={8}
+          color={"darkred"}
+          loading={loading}
+        />
+        {error && (
+          <p style={{ color: "darkred", textAlign: "center" }}>{error}</p>
+        )}
       </form>
       <span>
         Already have an account? <Link to="/login">Login</Link>
