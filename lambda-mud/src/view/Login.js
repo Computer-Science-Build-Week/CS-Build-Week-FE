@@ -44,7 +44,7 @@ const Login = props => {
   return (
     <AuthContainer>
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ height: "180px" }}>
         <input
           type="text"
           placeholder="Username"

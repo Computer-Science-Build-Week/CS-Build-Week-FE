@@ -36,10 +36,13 @@ const Register = props => {
         props.history.push("/login");
       })
       .catch(err => {
-        userData.password1 !== userData.password2
-          ? setError("Password confirmation doesn't match")
-          : setError(err.response.data.password1);
-
+        if (userData.password1 !== userData.password2)
+          setError("Password confirmation doesn't match");
+        else if (err.response.data.password1)
+          setError(err.response.data.password1);
+        else {
+          setError("This User is already registered");
+        }
         setTimeout(() => {
           setError("");
         }, 2500);

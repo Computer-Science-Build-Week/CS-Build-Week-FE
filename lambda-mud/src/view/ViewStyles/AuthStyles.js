@@ -11,11 +11,14 @@ export const AuthContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: lightgrey;
+  justify-content: center;
 
   h1 {
     font-size: 24px;
     text-align: center;
     padding: 10px;
+    width: 100%;
+    height: 100%;
   }
   span {
     margin: 10px 0;
@@ -33,11 +36,10 @@ export const AuthContainer = styled.div`
     padding: 20px 0;
     margin: auto;
     width: 100%;
-    &:before {
-    }
+    height: 220px;
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/rip.svg)
       bottom center;
-    background-size: 120%;
+    background-size: 150%;
 
     input {
       width: 200px;
