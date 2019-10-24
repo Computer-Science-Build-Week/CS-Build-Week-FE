@@ -23,7 +23,10 @@ const Register = props => {
     e.preventDefault();
     setError("");
     axios
-      .post("https://lambda-mud-test.herokuapp.com/api/registration/", userData)
+      .post(
+        "https://lambda-mud-game-sny.herokuapp.com/api/registration/",
+        userData
+      )
       .then(res => {
         console.log(res);
         localStorage.setItem("key", res.data.key);

@@ -4,10 +4,10 @@ import Routes from "./Routes/appRoutes";
 
 function App() {
   return (
-    <div>
+    <>
       <GlobalStyle />
       <Routes />
-    </div>
+    </>
   );
 }
 
