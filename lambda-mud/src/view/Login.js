@@ -21,7 +21,7 @@ const Login = props => {
         localStorage.setItem("key", res.data.key);
         props.history.push("/dashboard");
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err.response));
 
     setUser({
       username: "",

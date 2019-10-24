@@ -18,7 +18,7 @@ export const GameArena = styled.section`
   justify-self: center;
   align-self: center;
   box-shadow: 0 2rem 2rem -2rem rgba(0, 0, 0, 0.24);
-  border: 1px solid green;
+  // border: 1px solid f8f8ff;
   @media (min-width: 90rem) {
     grid-template: ${({ width, height }) =>
       `repeat(${width}, 1.5rem) / repeat(${height}, 1.5rem)`};

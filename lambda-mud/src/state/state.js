@@ -2,11 +2,6 @@ import { useReducer, useEffect } from 'react';
 import generate from 'generate-maze';
 import axiosWithHeader from '../utils/axiosWithToken';
 
-const token = 'Token ' + localStorage.getItem('key');
-const headers = {
-  headers: { 'Content-Type': 'application/JSON', Authorization: token }
-};
-
 const { min, max } = Math;
 
 // CONSTANTS
@@ -31,7 +26,7 @@ const reducer = (state, { type, payload }) => {
         return { ...state, x: min(state.maze.length, ++state.x) };
       if (payload === 'ArrowDown' && !cell.bottom)
         return { ...state, y: min(state.maze.length, ++state.y) };
-    } 
+    }
 
     case SUCCESS:
       return { ...state, directions: payload };
@@ -46,6 +41,10 @@ const reducer = (state, { type, payload }) => {
 
 // STATE HOOK
 const useMaze = () => {
+  const token = 'Token ' + localStorage.getItem('key');
+  const headers = {
+    headers: { 'Content-Type': 'application/JSON', Authorization: token }
+  };
   const [state, dispatch] = useReducer(reducer, {
     maze: [],
     x: 0,
